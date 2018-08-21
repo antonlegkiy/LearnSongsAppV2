@@ -11,11 +11,17 @@
   "author": "antonlegkiy",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^1.0.0",
+    "raw-loader": "^0.5.1",
+    "style-loader": "^0.22.1",
     "webpack": "^4.16.5",
     "webpack-cli": "^3.1.0",
     "webpack-dev-server": "^3.1.5"
   },
   "dependencies": {
-    "angular": "^1.7.3"
+    "angular": "^1.7.3",
+    "angular-animate": "^1.7.3",
+    "angular-aria": "^1.7.3",
+    "angular-material": "^1.1.10"
   }
 }
