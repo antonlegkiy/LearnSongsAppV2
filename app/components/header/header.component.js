@@ -1,7 +1,7 @@
-import tmpl from './header.tmpl.html';
+import template from './header.tmpl.html';
 
 export default {
-  template: tmpl,
+  template,
   controllerAs: 'vm',
   controller: headerCtrl
 }

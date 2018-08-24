@@ -1,0 +1,13 @@
+.songs-list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.songs-list md-content {
+    width: 40vw;
+}
+
+.songs-list .list-text {
+    text-align: center;
+}

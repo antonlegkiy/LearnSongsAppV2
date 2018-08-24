@@ -8,7 +8,7 @@ export default (app) => {
           component: 'appHeader'
         },
         'content': {
-          component: 'appMain'
+          component: 'appMainList'
         }
       }
     };
