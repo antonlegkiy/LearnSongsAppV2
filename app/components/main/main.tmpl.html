@@ -7,11 +7,11 @@
         <md-list flex>
             <md-subheader class="md-no-sticky">list of not played songs for a while</md-subheader>
             <md-divider></md-divider>
-            <md-list-item class="md-3-line" ng-repeat="item in vm.todos" ng-click="vm.onSelectedTab(item.tabs)">
+            <md-list-item class="md-3-line" ng-repeat="item in vm.songList" ng-click="vm.onSelectedTab(item.link)">
                 <div class="md-list-item-text list-text" layout="column">
                     <h3>{{ item.band }}</h3>
                     <h4>{{ item.song }}</h4>
-                    <p>{{ item.tunning }}</p>
+                    <p>{{ item.tuning }}</p>
                     <p>{{ item.lastplayed }}</p>
                 </div>
                 <md-divider></md-divider>
