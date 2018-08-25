@@ -32,7 +32,7 @@ export default function ($http, $q, $rootScope) {
   };
 
   return {
-    getSongsList: function () {
+    getSongsList: function (all) {
       songList = [];
       return dbCollection.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -43,7 +43,13 @@ export default function ($http, $q, $rootScope) {
           obj[key].lastplayed = moment(song.lastplayed.seconds * 1000).fromNow();
         });
 
-        return songList;
+        if (all) {
+          return songList;
+        } else {
+          return songList.filter((song) => {
+            return song.mark;
+          });
+        }
       }).catch((error) => {
         console.error('error while get data from firebase', error);
       });

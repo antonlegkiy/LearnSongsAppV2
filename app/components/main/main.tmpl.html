@@ -7,9 +7,9 @@
         <md-list flex>
             <md-subheader class="md-no-sticky">list of not played songs for a while</md-subheader>
             <md-divider></md-divider>
-            <md-list-item class="md-3-line"
+            <md-list-item class="md-3-line app-list-item"
                           ng-repeat="item in vm.songList"
-                          md-colors="{background: (item.mark ? item.mark : white)}"
+                          md-colors="{'border-left-color': (item.mark ? item.mark : white)}"
                           ng-click="vm.onSelectedTab(item.link)">
                 <div class="md-list-item-text list-text" layout="column">
                     <h3>{{ item.band }}</h3>

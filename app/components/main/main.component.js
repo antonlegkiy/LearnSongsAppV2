@@ -3,6 +3,7 @@ import './main.style.css';
 
 export default {
   template,
+  bindings: { fullList: '=' },
   controllerAs: 'vm',
   controller: mainPageListCtrl
 };
@@ -23,8 +24,7 @@ function mainPageListCtrl($window, appService, $scope) {
 
   function loadSongList() {
     vm.spinner = true;
-    appService.getSongsList().then((list) => {
-      console.log(list)
+    appService.getSongsList(vm.fullList).then((list) => {
       vm.songList = list;
       vm.spinner = false;
       $scope.$apply();

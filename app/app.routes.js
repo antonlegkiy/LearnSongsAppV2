@@ -10,6 +10,11 @@ export default (app) => {
         'content': {
           component: 'appMainList'
         }
+      },
+      resolve: {
+        fullList: function () {
+          return false;
+        }
       }
     };
 
@@ -21,7 +26,12 @@ export default (app) => {
           component: 'appHeader'
         },
         'content': {
-          component: 'appList'
+          component: 'appMainList'
+        }
+      },
+      resolve: {
+        fullList: function () {
+          return true;
         }
       }
     };
