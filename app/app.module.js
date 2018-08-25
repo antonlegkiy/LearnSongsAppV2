@@ -8,6 +8,7 @@ import addSong from './components/add-song/add-song.component';
 import appHeader from './components/header/header.component';
 import appList from './components/list/list.component';
 import appAbout from './components/about/about.component';
+import appSpinner from './directive/spinner/spinner.directive';
 
 const app = angular.module('app', [ 'ngMaterial', 'ui.router' ]);
 
@@ -23,6 +24,9 @@ app.component('addSong', addSong);
 app.component('appHeader', appHeader);
 app.component('appList', appList);
 app.component('appAbout', appAbout);
+
+/*directives*/
+app.directive('spinner', appSpinner);
 
 /*routes*/
 routes(app);

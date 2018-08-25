@@ -7,10 +7,11 @@ export default {
   controller: mainPageListCtrl
 };
 
-function mainPageListCtrl($window, appService, $rootScope) {
+function mainPageListCtrl($window, appService, $scope) {
   const vm = this;
 
   vm.songList = [];
+  vm.spinner = false;
 
   vm.$onInit = function () {
     loadSongList();
@@ -21,9 +22,11 @@ function mainPageListCtrl($window, appService, $rootScope) {
   };
 
   function loadSongList() {
-    appService.getSongsList().then(function (list) {
+    vm.spinner = true;
+    appService.getSongsList().then((list) => {
       vm.songList = list;
-      $rootScope.$apply();
+      vm.spinner = false;
+      $scope.$apply();
     });
   }
 }

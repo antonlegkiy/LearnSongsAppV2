@@ -35,6 +35,10 @@ export default function ($http, $q, $rootScope) {
         .catch(function(error) {
           console.error("Error adding document: ", error);
         });
+    },
+    
+    removeSong: function (index) {
+      
     }
   };
 };

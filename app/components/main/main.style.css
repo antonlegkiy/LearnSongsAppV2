@@ -11,3 +11,7 @@
 .songs-list .list-text {
     text-align: center;
 }
+
+.height90 {
+    height: 90vh;
+}

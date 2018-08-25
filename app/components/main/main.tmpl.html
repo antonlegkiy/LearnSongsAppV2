@@ -2,7 +2,7 @@
     <add-song></add-song>
 </div>
 
-<div class="songs-list">
+<div class="songs-list" ng-if="!vm.spinner">
     <md-content>
         <md-list flex>
             <md-subheader class="md-no-sticky">list of not played songs for a while</md-subheader>
@@ -18,4 +18,8 @@
             </md-list-item>
         </md-list>
     </md-content>
+</div>
+
+<div class="songs-list height90">
+    <spinner enable="vm.spinner"></spinner>
 </div>
