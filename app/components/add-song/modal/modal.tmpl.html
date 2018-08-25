@@ -1,0 +1,47 @@
+<md-dialog aria-label="Add new song">
+    <form ng-cloak>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>New Song</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="cancel()">
+                    <md-icon aria-label="Close dialog"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <md-input-container class="md-block">
+                    <label>Band</label>
+                    <input ng-model="tab.band">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Song name</label>
+                    <input ng-model="tab.song">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Tabs link</label>
+                    <input ng-model="tab.link">
+                </md-input-container>
+
+                <md-input-container class="md-block">
+                    <label>Tuning</label>
+                    <input ng-model="tab.tuning">
+                </md-input-container>
+            </div>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button ng-click="cancel()">
+                Cancel
+            </md-button>
+            <md-button ng-click="onSaveTab()">
+                Save
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

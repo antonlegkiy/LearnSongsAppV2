@@ -12,21 +12,23 @@ module.exports = {
     publicPath: '/'
   },
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.html$/,
         loader: 'raw-loader'
-      },
-      {
+      },{
         test: /\.css$/,
         use: [ 'style-loader', 'css-loader' ]
-      },
-      {
+      },{
         test: /\.js$/,
         loader: 'babel-loader',
         exclude: /node_modules/
-      },
-    ]
+      },{
+        test: /\.svg$/,
+        loader: 'svg-inline-loader'
+      },{
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: 'file-loader'
+      }]
   },
   devtool: 'inline-source-map',
   devServer: {

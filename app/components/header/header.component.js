@@ -8,6 +8,4 @@ export default {
 
 function headerCtrl() {
   const vm = this;
-
-  vm.brandName = 'Stub';
 }
