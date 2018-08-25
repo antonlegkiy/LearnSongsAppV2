@@ -1,8 +1,8 @@
 export default (app) => {
-  app.config(function ($stateProvider) {
+  app.config(function ($stateProvider, $locationProvider) {
     const homeState = {
       name: 'main',
-      url: '',
+      url: '/',
       views: {
         'header': {
           component: 'appHeader'
@@ -42,5 +42,8 @@ export default (app) => {
     $stateProvider.state(homeState);
     $stateProvider.state(listState);
     $stateProvider.state(aboutState);
+
+    $locationProvider.html5Mode(true);
+    $locationProvider.hashPrefix('');
   });
 };
