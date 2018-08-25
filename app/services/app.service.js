@@ -1,4 +1,5 @@
 import moment from 'moment';
+import angular from 'angular';
 
 import { constants } from './../app.constants';
 
@@ -31,12 +32,17 @@ export default function ($http, $q, $rootScope) {
     return songs;
   };
 
+  const hideSongsWithoutMarks = (songs) => {
+    return songs.filter(song => song.mark);
+  };
+
   return {
     getSongsList: function (all) {
       songList = [];
       return dbCollection.get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          songList.push(doc.data());
+          let song = doc.data();
+          songList.push({...song, id: doc.id});
         });
 
         markOldSongsWithColor(songList).forEach((song, key, obj) => {
@@ -46,9 +52,7 @@ export default function ($http, $q, $rootScope) {
         if (all) {
           return songList;
         } else {
-          return songList.filter((song) => {
-            return song.mark;
-          });
+          return hideSongsWithoutMarks(songList);
         }
       }).catch((error) => {
         console.error('error while get data from firebase', error);
@@ -68,8 +72,28 @@ export default function ($http, $q, $rootScope) {
         });
     },
     
-    removeSong: function (index) {
-      
+    removeSong: function (id) {
+      dbCollection.doc(id).delete().then(() => {
+        console.log('song was removed successfully');
+      }).catch((e) => {
+        console.error('error while removing song', e);
+      });
+    },
+    
+    updateSongDate: function (id, allList) {
+      return dbCollection.doc(id).update({
+        lastplayed: new Date()
+      }).then(() => {
+        let updatedSongList = angular.copy(songList);
+        if (!allList) {
+          updatedSongList = hideSongsWithoutMarks(updatedSongList);
+        }
+        console.log('song was updated');
+        return updatedSongList.filter(song => song.id !== id);
+      }).catch((e) => {
+        console.log('song was not updated, couse', e);
+        return null;
+      });
     }
   };
 };

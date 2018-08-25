@@ -10,7 +10,7 @@
             <md-list-item class="md-3-line app-list-item"
                           ng-repeat="item in vm.songList"
                           md-colors="{'border-left-color': (item.mark ? item.mark : white)}"
-                          ng-click="vm.onSelectedTab(item.link)">
+                          ng-click="vm.onSelectedTab(item.link, item.id)">
                 <div class="md-list-item-text list-text" layout="column">
                     <h3>{{ item.band }}</h3>
                     <h4>{{ item.song }}</h4>

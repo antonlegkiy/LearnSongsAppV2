@@ -18,7 +18,13 @@ function mainPageListCtrl($window, appService, $scope) {
     loadSongList();
   };
 
-  vm.onSelectedTab = (link) => {
+  vm.onSelectedTab = (link, id) => {
+    appService.updateSongDate(id, vm.fullList).then((result) => {
+      if (result) {
+        vm.songList = result;
+        $scope.$apply();
+      }
+    });
     $window.open(link, '_blank');
   };
 
