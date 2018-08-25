@@ -24,6 +24,7 @@ function mainPageListCtrl($window, appService, $scope) {
   function loadSongList() {
     vm.spinner = true;
     appService.getSongsList().then((list) => {
+      console.log(list)
       vm.songList = list;
       vm.spinner = false;
       $scope.$apply();
