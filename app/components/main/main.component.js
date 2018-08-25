@@ -20,13 +20,10 @@ function mainPageListCtrl($window, appService, $rootScope) {
     $window.open(link, '_blank');
   };
 
-  $rootScope.$on('new-song-added', () => {
-    loadSongList();
-  });
-
   function loadSongList() {
-    appService.getSongsList().then((list) => {
+    appService.getSongsList().then(function (list) {
       vm.songList = list;
+      $rootScope.$apply();
     });
   }
 }

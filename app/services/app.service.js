@@ -1,25 +1,40 @@
+import moment from 'moment';
+
+import { constants } from './../app.constants';
+
 export default function ($http, $q, $rootScope) {
-  let songList = [{
-    band: 'Interpol',
-    song: 'Obstacle 1',
-    link: 'https://www.911tabs.com/link/?6214176',
-    tuning: 'Drop D',
-    lastplayed: '2 weeks ago'
-  },{
-    band: 'Red Hot Chili Peppers',
-    song: 'The Longest Wave',
-    link: 'https://www.911tabs.com/link/?9244100',
-    tuning: 'Standard',
-    lastplayed: '1 weeks ago'
-  }];
+  var db = $rootScope.firebase.firestore();
+  db.settings({timestampsInSnapshots: true});
+
+  const dbCollection = db.collection(constants.DB_COLLECTION_NAME);
+  let songList = [];
+
   return {
     getSongsList: function () {
-      return $q.when(songList);
+      songList = [];
+      return dbCollection.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          let currentDoc = doc.data();
+          currentDoc.lastplayed = moment(currentDoc.lastplayed.seconds * 1000).fromNow();
+          songList.push(currentDoc);
+        });
+        return songList;
+      }).catch((error) => {
+        console.error('error while get data from firebase', error);
+      });
     },
 
     addNewSong: function (song) {
+      const songData = {...song, lastplayed: new Date()};
       songList.push(song);
-      $rootScope.$emit('new-song-added');
+
+      dbCollection.add(songData)
+        .then(function(docRef) {
+          console.log("Document written with ID: ", docRef.id);
+        })
+        .catch(function(error) {
+          console.error("Error adding document: ", error);
+        });
     }
   };
 };
