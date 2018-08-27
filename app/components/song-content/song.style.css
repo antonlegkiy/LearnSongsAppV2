@@ -1,0 +1,12 @@
+object {
+    width: 100vw;
+    height: 90vh;
+}
+
+.song-header {
+    text-align: center;
+}
+
+.song-header h4 {
+    color: grey;
+}

@@ -18,6 +18,19 @@ export default (app) => {
       }
     };
 
+    const songState = {
+      name: 'song',
+      url: '/:name',
+      views: {
+        'header': {
+          component: 'appHeader',
+        },
+        'content': {
+          component: 'songContent'
+        }
+      }
+    };
+
     const listState = {
       name: 'list',
       url: '/list',
@@ -52,6 +65,7 @@ export default (app) => {
     $stateProvider.state(homeState);
     $stateProvider.state(listState);
     $stateProvider.state(aboutState);
+    $stateProvider.state(songState);
 
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('');

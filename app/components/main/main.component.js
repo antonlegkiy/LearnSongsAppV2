@@ -8,7 +8,7 @@ export default {
   controller: mainPageListCtrl
 };
 
-function mainPageListCtrl($window, appService, $scope) {
+function mainPageListCtrl($window, appService, $scope, $state, $rootScope) {
   const vm = this;
 
   vm.songList = [];
@@ -18,15 +18,20 @@ function mainPageListCtrl($window, appService, $scope) {
     loadSongList();
   };
 
-  vm.onSelectedTab = (link, id) => {
-    appService.updateSongDate(id, vm.fullList).then((result) => {
+  vm.onSelectedTab = (item) => {
+    appService.updateSongDate(item.id, vm.fullList).then((result) => {
       if (result) {
         vm.songList = result;
         $scope.$apply();
       }
     });
-    $window.open(link, '_blank');
+    // $window.open(link, '_blank');
+    const songName = item.song.split(' ').join('-');
+    localStorage.setItem('selected-song', JSON.stringify(item));
+    $state.go('song', { name: songName });
   };
+
+  localStorage.clear();
 
   function loadSongList() {
     vm.spinner = true;
