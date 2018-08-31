@@ -3,7 +3,7 @@ import angular from 'angular';
 
 import { constants } from './../app.constants';
 
-export default function ($http, $q, $rootScope) {
+export default ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
   const db = $rootScope.firebase.firestore();
   db.settings({timestampsInSnapshots: true});
   const dbCollection = db.collection(constants.DB_COLLECTION_NAME);
@@ -96,4 +96,4 @@ export default function ($http, $q, $rootScope) {
       });
     }
   };
-};
+}];

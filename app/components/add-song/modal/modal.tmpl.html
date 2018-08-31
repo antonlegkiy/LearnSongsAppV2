@@ -1,5 +1,9 @@
 <md-dialog aria-label="Add new song">
-    <form ng-cloak>
+    <form name="form"
+          novalidate
+          ng-submit="onSaveTab(form)"
+          ng-cloak>
+
         <md-toolbar>
             <div class="md-toolbar-tools">
                 <h2>New Song</h2>
@@ -12,24 +16,39 @@
 
         <md-dialog-content>
             <div class="md-dialog-content">
-                <md-input-container class="md-block">
-                    <label>Band</label>
-                    <input ng-model="newSong.band">
+                <md-input-container class="md-block" md-is-error="form.band.$invalid && form.$submitted">
+                    <label for="band">Band</label>
+                    <input id="band"
+                           name="band"
+                           type="text"
+                           ng-model="newSong.band"
+                           required>
                 </md-input-container>
 
                 <md-input-container class="md-block">
-                    <label>Song name</label>
-                    <input ng-model="newSong.song">
+                    <label for="song">Song name</label>
+                    <input id="song"
+                           name="song"
+                           type="text"
+                           ng-model="newSong.song"
+                           required>
                 </md-input-container>
 
                 <md-input-container class="md-block">
-                    <label>Tabs link</label>
-                    <input ng-model="newSong.link">
+                    <label for="link">Tabs link</label>
+                    <input id="link"
+                           name="link"
+                           type="url"
+                           ng-model="newSong.link">
                 </md-input-container>
 
                 <md-input-container class="md-block">
-                    <label>Tuning</label>
-                    <input ng-model="newSong.tuning">
+                    <label for="tuning">Tuning</label>
+                    <input id="tuning"
+                           name="tuning"
+                           type="text"
+                           ng-model="newSong.tuning"
+                           required>
                 </md-input-container>
             </div>
         </md-dialog-content>
@@ -39,9 +58,9 @@
             <md-button ng-click="cancel()">
                 Cancel
             </md-button>
-            <md-button ng-click="onSaveTab()">
+            <button type="submit" md-button>
                 Save
-            </md-button>
+            </button>
         </md-dialog-actions>
     </form>
 </md-dialog>

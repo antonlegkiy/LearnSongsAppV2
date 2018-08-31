@@ -1,11 +1,7 @@
+import controller from './about.controller';
+
 export default {
   template: '<div>{{ vm.about }}</div>',
   controllerAs: 'vm',
-  controller: aboutCtrl
+  controller
 };
-
-function aboutCtrl() {
-  const vm = this;
-
-  vm.about = 'ABOUT';
-}
