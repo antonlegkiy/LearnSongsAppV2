@@ -8,6 +8,7 @@ export default ['appService', '$scope', '$state', function (appService, $scope, 
     loadSongList();
     localStorage.clear();
   };
+
   vm.onSelectedTab = (item) => {
     const songName = item.song.split(' ').join('-');
     appService.updateSongDate(item.id, vm.fullList).then((result) => {
