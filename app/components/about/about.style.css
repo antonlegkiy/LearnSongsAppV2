@@ -1,0 +1,21 @@
+.about-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.about-container md-content {
+    width: 40vw;
+    text-align: center;
+    top: 20vh;
+}
+
+.about-container p {
+    font-family: monospace;
+    font-size: 14px;
+    color: darkslategray;
+}
+
+.about-container i {
+    font-size: 12px;
+}

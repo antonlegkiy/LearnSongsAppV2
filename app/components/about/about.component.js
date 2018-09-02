@@ -1,7 +1,9 @@
 import controller from './about.controller';
+import template from './about.tmpl.html';
+import './about.style.css';
 
 export default {
-  template: '<div>{{ vm.about }}</div>',
+  template,
   controllerAs: 'vm',
   controller
 };
