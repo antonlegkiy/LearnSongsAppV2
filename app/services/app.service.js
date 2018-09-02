@@ -86,10 +86,10 @@ export default ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
       }).then(() => {
         let updatedSongList = angular.copy(songList);
         if (!allList) {
-          updatedSongList = hideSongsWithoutMarks(updatedSongList);
+          updatedSongList = hideSongsWithoutMarks(updatedSongList).filter(song => song.id !== id);
         }
         console.log('song was updated');
-        return updatedSongList.filter(song => song.id !== id);
+        return updatedSongList;
       }).catch((e) => {
         console.log('song was not updated, couse', e);
         return null;
