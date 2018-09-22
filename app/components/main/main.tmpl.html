@@ -5,7 +5,7 @@
 <div class="songs-list" ng-if="!vm.spinner">
     <md-content>
         <md-list flex>
-            <md-subheader class="md-no-sticky">list of not played songs for a while</md-subheader>
+            <md-subheader class="md-no-sticky" ng-if="!vm.fullList">list of not played songs for a while</md-subheader>
             <md-divider></md-divider>
             <md-list-item class="md-3-line app-list-item"
                           ng-repeat="item in vm.songList"
