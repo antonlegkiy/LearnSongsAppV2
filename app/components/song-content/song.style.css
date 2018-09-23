@@ -10,3 +10,14 @@ object {
 .song-header h4 {
     color: grey;
 }
+
+.update-song-button {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.song-update-pending {
+    display: inline-block;
+    vertical-align: middle;
+}
