@@ -11,13 +11,6 @@ export default ['appService', '$scope', '$state', function (appService, $scope, 
 
   vm.onSelectedTab = (item) => {
     const songName = item.song.split(' ').join('-');
-    appService.updateSongDate(item.id, vm.fullList).then((result) => {
-      if (result) {
-        vm.songList = result;
-        $scope.$apply();
-      }
-
-    });
     localStorage.setItem('selected-song', JSON.stringify(item));
     $state.go('song', { name: songName });
 

@@ -80,18 +80,14 @@ export default ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
       });
     },
     
-    updateSongDate: function (id, allList) {
+    updateSongDate: function (id) {
       return dbCollection.doc(id).update({
         lastplayed: new Date()
       }).then(() => {
-        let updatedSongList = angular.copy(songList);
-        if (!allList) {
-          updatedSongList = hideSongsWithoutMarks(updatedSongList).filter(song => song.id !== id);
-        }
         console.log('song was updated');
-        return updatedSongList;
+        return null;
       }).catch((e) => {
-        console.log('song was not updated, couse', e);
+        console.log('song was not updated, cause', e);
         return null;
       });
     }

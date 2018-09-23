@@ -1,6 +1,17 @@
 <div class="song-header">
     <h1>{{ vm.song.song }} by {{ vm.song.band }}</h1>
     <h4>{{ vm.song.tuning }}</h4>
+    <md-button class="md-raised md-primary update-song-button"
+               ng-if="!vm.isUpdated"
+               ng-disabled="vm.isPending"
+               ng-click="vm.updateSongStatus()">Update
+        <md-progress-circular ng-if="vm.isPending"
+                              class="md-hue-2 song-update-pending"
+                              md-diameter="20px"></md-progress-circular>
+    </md-button>
+    <md-button ng-disabled="true"
+               class="md-primary update-song-button"
+               ng-if="vm.isUpdated">Updated</md-button>
 </div>
 
 <div id="frame-window"></div>
