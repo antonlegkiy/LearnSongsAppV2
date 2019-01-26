@@ -1,0 +1,19 @@
+<div class="account-block">
+    <md-card>
+        <md-toolbar class="md-primary">
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex md-headline" ng-bind="vm.title"></h2>
+            </div>
+        </md-toolbar>
+        <md-card-content layout="row" layout-align="space-between">
+            <div class="account-auth-inner">
+                <div ui-view>
+                    <div ui-view>
+                        <app-login></app-login>
+                    </div>
+                </div>
+            </div>
+        </md-card-content>
+    </md-card>
+</div>
+

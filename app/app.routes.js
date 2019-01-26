@@ -1,73 +1,101 @@
-export default (app) => {
-  app.config(function ($stateProvider, $locationProvider) {
-    const homeState = {
-      name: 'main',
-      url: '/',
-      views: {
-        'header': {
-          component: 'appHeader'
+import template from './root.tmpl.html';
+
+export const routes = ['$stateProvider', '$locationProvider', '$urlRouterProvider', function ($stateProvider, $locationProvider, $urlRouterProvider) {
+  $stateProvider
+      .state({
+        name: 'root',
+        url: '',
+        abstract: true,
+        template
+      })
+      .state({
+        name: 'root.auth',
+        abstract: true,
+        url: '/auth',
+        views: {
+          'header': '',
+          'content': {
+            component: 'appAccount'
+          }
+        }
+      })
+      .state({
+        name: 'root.auth.login',
+        url: '/login',
+        views: {
+          '': {
+            component: 'appLogin'
+          }
+        }
+      })
+      .state({
+        name: 'root.auth.signup',
+        url: '/signup',
+        views: {
+          '': {
+            component: 'appSignup'
+          }
+        }
+      })
+      .state({
+        name: 'root.main-list',
+        url: '/main-list',
+        views: {
+          'header': {
+            component: 'appHeader'
+          },
+          'content': {
+            component: 'appMainList'
+          }
         },
-        'content': {
-          component: 'appMainList'
+        resolve: {
+          fullList: function () {
+            return false;
+          }
         }
-      },
-      resolve: {
-        fullList: function () {
-          return false;
+      })
+      .state({
+        name: 'root.song',
+        url: '/:name',
+        views: {
+          'header': {
+            component: 'appHeader',
+          },
+          'content': {
+            component: 'songContent'
+          }
         }
-      }
-    };
-
-    const songState = {
-      name: 'song',
-      url: '/:name',
-      views: {
-        'header': {
-          component: 'appHeader',
+      })
+      .state({
+        name: 'root.list',
+        url: '/list',
+        views: {
+          'header': {
+            component: 'appHeader'
+          },
+          'content': {
+            component: 'appMainList'
+          }
         },
-        'content': {
-          component: 'songContent'
+        resolve: {
+          fullList: function () {
+            return true;
+          }
         }
-      }
-    };
-
-    const listState = {
-      name: 'list',
-      url: '/list',
-      views: {
-        'header': {
-          component: 'appHeader'
-        },
-        'content': {
-          component: 'appMainList'
+      })
+      .state({
+        name: 'root.about',
+        url: '/about',
+        views: {
+          'header': {
+            component: 'appHeader'
+          },
+          'content': {
+            component: 'appAbout'
+          }
         }
-      },
-      resolve: {
-        fullList: function () {
-          return true;
-        }
-      }
-    };
-
-    const aboutState = {
-      name: 'about',
-      url: '/about',
-      views: {
-        'header': {
-          component: 'appHeader'
-        },
-        'content': {
-          component: 'appAbout'
-        }
-      }
-    };
-
-    $stateProvider.state(homeState);
-    $stateProvider.state(listState);
-    $stateProvider.state(aboutState);
-    $stateProvider.state(songState);
-
+      });
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('');
-  });
-};
+    $urlRouterProvider.when('/', '/auth/login');
+}];

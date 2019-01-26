@@ -1,12 +1,9 @@
 import moment from 'moment';
-import angular from 'angular';
 
-import { constants } from './../app.constants';
-
-export default ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
+export const appService = ['$http', '$q', '$rootScope', function ($http, $q, $rootScope) {
   const db = $rootScope.firebase.firestore();
-  db.settings({timestampsInSnapshots: true});
-  const dbCollection = db.collection(constants.DB_COLLECTION_NAME);
+  const document = JSON.parse(localStorage.getItem('userdata'));
+  const dbCollection = db.collection(document.userid);
   const today = moment();
   let songList = [];
 

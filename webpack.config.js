@@ -1,9 +1,10 @@
 const path = require('path');
+const glob = require('glob');
 const packages = require('./package');
 
 module.exports = {
   entry: {
-    app: './app/index.js',
+    app: glob.sync("./app/**/*.js"),
     vendor: Object.keys(packages.dependencies)
   },
   output: {

@@ -2,7 +2,7 @@ import controller from './main.controller';
 import template from './main.tmpl.html';
 import './main.style.css';
 
-export default {
+export const mainViewComponent = {
   template,
   bindings: { fullList: '=' },
   controllerAs: 'vm',

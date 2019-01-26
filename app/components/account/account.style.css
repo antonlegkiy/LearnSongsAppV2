@@ -1,0 +1,19 @@
+.account-block {
+    display: flex;
+    justify-content: center;
+    padding-left: 30%;
+    padding-right: 30%;
+    padding-top: 5%;
+}
+
+.account-block md-card {
+    flex: 1;
+}
+
+.account-block md-card .account-auth-inner {
+    width: 100%;
+}
+
+.toggle-login-registration-button {
+    text-transform: capitalize;
+}
