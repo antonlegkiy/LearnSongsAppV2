@@ -101,5 +101,14 @@ export const routes = ['$stateProvider', '$locationProvider', '$urlRouterProvide
       });
     $locationProvider.html5Mode(true);
     $locationProvider.hashPrefix('');
-    $urlRouterProvider.when('/', '/auth/login');
+
+    $urlRouterProvider.when('/', ['$match', '$state', function ($match, $state) {
+      const user = localStorage.getItem('userdata');
+      const isLoggedIn = user ? JSON.parse(user) : null;
+      if (isLoggedIn && isLoggedIn.userid) {
+        $state.transitionTo('root.main-list', $match, false);
+      } else {
+        $state.transitionTo('root.auth.login', $match, false);
+      }
+    }]);
 }];

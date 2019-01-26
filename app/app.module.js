@@ -1,8 +1,10 @@
 import angular from 'angular';
-export const app = angular.module('app', [ 'ngMaterial', 'ui.router' ]);
+import 'angular-ui-router/lib/legacy/stateEvents';
+export const app = angular.module('app', [ 'ngMaterial', 'ui.router', 'ui.router.state.events' ]);
 
 import {routes} from './app.routes';
 import firebaseInit from "./firebase.init";
+import authCheck from './components/account/auth-check';
 import {appService} from './services/app.service';
 import {accountService} from './components/account/account.service';
 import spinner from './directive/spinner/spinner.directive';
@@ -18,6 +20,7 @@ import {songComponent} from './components/song-content/song.component';
 
 app.config(routes);
 app.run(firebaseInit);
+app.run(authCheck);
 app.service('appService', appService);
 app.service('account', accountService);
 app.directive('spinner', spinner);
