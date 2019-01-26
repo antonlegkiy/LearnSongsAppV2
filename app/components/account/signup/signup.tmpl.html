@@ -53,14 +53,15 @@
     </md-dialog-content>
 
     <div class="md-dialog-content">
-        <md-button ng-click="vm.showLogin()">or login</md-button>
+        <button md-button
+                class="toggle-login-registration-button"
+                ng-click="vm.showLogin()">or login
+        </button>
     </div>
 
     <md-dialog-actions layout="row">
         <span flex></span>
-        <md-button ng-click="cancel()">
-            Cancel
-        </md-button>
+
         <button type="submit" md-button>
             Register
         </button>

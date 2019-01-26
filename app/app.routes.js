@@ -57,6 +57,10 @@ export const routes = ['$stateProvider', '$locationProvider', '$urlRouterProvide
       .state({
         name: 'root.song',
         url: '/:name',
+        params: {
+          name: '',
+          song: {}
+        },
         views: {
           'header': {
             component: 'appHeader',

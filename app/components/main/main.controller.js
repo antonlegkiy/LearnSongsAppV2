@@ -6,13 +6,11 @@ export default ['appService', '$scope', '$state', function (appService, $scope, 
 
   vm.$onInit = () => {
     loadSongList();
-    localStorage.clear();
   };
 
-  vm.onSelectedTab = (item) => {
-    const songName = item.song.split(' ').join('-');
-    localStorage.setItem('selected-song', JSON.stringify(item));
-    $state.go('root.song', { name: songName });
+  vm.onSelectedTab = (data) => {
+    const songName = data.song.split(' ').join('_');
+    $state.go('root.song', { name: songName, song: data });
 
   };
 

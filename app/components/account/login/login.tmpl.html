@@ -27,7 +27,10 @@
 
     <md-dialog-content>
         <div class="md-dialog-content">
-            <md-button ng-click="vm.showRegister()">or signup</md-button>
+            <button md-button
+                    class="toggle-login-registration-button"
+                    ng-click="vm.showRegister()">or signup
+            </button>
         </div>
     </md-dialog-content>
 
@@ -35,7 +38,7 @@
         <span flex></span>
         <button type="submit"
                 md-button
-                class="md-raised md-primary toggle-login-registration-button">
+                class="md-raised md-primary">
             Enter
         </button>
     </md-dialog-actions>

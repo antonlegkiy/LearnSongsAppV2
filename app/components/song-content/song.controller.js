@@ -1,8 +1,8 @@
 import angular from "angular";
 
-export default ['appService', '$scope', function(appService, $scope) {
+export default ['appService', '$scope', '$stateParams', function(appService, $scope, $stateParams) {
   const vm = this;
-  vm.song = localStorage.getItem('selected-song');
+  vm.song = $stateParams.song;
   vm.isUpdated = false;
   vm.isPending = false;
 
@@ -10,7 +10,6 @@ export default ['appService', '$scope', function(appService, $scope) {
 
   vm.$onInit = () => {
     if (vm.song) {
-      vm.song = JSON.parse(vm.song);
       const obj = angular.element('<object></object>').attr({
         data: vm.song.link,
         width: '1500px',
